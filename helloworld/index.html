@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark/Light Mode Toggle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+            background-color: white;
+            color: black;
+        }
+
+        body.dark {
+            background-color: black;
+            color: white;
+        }
+
+        .toggle-button {
+            background-color: transparent; /* Make the background transparent */
+            border: none;
+            color: inherit; /* Inherit the text color */
+            padding: 10px; /* Adjust padding as needed */
+            font-size: 24px; /* Increase font size for better visibility */
+            cursor: pointer;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+        }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #a5fb73;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition:
+                background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .download-icon {
+            margin-right: 5px;
+        }
+
+        .download-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color:
+                rgba(255, 255, 255, 0.3);
+            transform:
+                translateX(-50%) scaleX(0);
+            transition:
+                transform 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .download-btn:hover::after {
+            transform:
+                translateX(-50%) scaleX(1);
+        }
+    </style>
+</head>
+<body>
+
+<button class="toggle-button" id="theme-toggle">
+    <i class="fa-solid fa-lightbulb"></i>
+</button>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        
+        if (document.body.classList.contains('dark')) {
+            toggleButton.innerHTML = '<i class="fa-solid fa-moon"></i>'; // Change to moon icon
+        } else {
+            toggleButton.innerHTML = '<i class="fa-solid fa-lightbulb"></i>'; // Change to lightbulb icon
+        }
+    });
+</script>
+<a href="./web-deve.png" class="download-btn" download="./240_F_790965504_otIMeZnDZc2PB0srcE4FmEvx0hsVXZYj.jpg">
+    <i class="fas fa-download download-icon"></i>
+    Download
+</a>
+<!-- <a href="./img/download.jpg" download="./img/download.jpg"><button>DOWNLOAD PDF</button></a> -->
+</body>
+</html>
